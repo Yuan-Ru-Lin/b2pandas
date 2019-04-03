@@ -1,6 +1,4 @@
 import unittest
-# import sys
-# sys.path.append("../")
 from special_relativity.special_relativity import *
 
 
