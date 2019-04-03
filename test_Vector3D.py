@@ -1,7 +1,7 @@
 import unittest
-import sys
-sys.path.append("../")
-from special_relativity import *
+# import sys
+# sys.path.append("../")
+from special_relativity.special_relativity import *
 
 
 class TestVector3D(unittest.TestCase):
