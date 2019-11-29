@@ -85,3 +85,4 @@ def no_parentheses(var):
 
 
 fourMomentum = ['E', 'px', 'py', 'pz']
+metaData = ['__experiment__', '__run__', '__event__',  '__candidate__', '__ncandidates__', '__weight__']
