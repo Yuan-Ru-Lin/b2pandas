@@ -13,11 +13,6 @@ class TestVector3D(unittest.TestCase):
         self.x = Vector3D(self.df[0], self.df[1], self.df[2])
         self.y = self.df[3]
 
-    def tearDown(self):
-        self.df = None
-        self.x = None
-        self.y = None
-
     def test__mul__(self):
         # Verify the multiplication in Vector3D * Vector3D (= Number)
         np.testing.assert_allclose(
@@ -35,6 +30,10 @@ class TestVector3D(unittest.TestCase):
 #         import pdb; pdb.set_trace()
 #         self.assertTrue(self.y * self.x == Vector3D(self.df[0] * self.df[3], self.df[1] * self.df[3], self.df[2]* self.df[3]))
 
+    def tearDown(self):
+        self.df = None
+        self.x = None
+        self.y = None
 
 if __name__ == "__main__":
     unittest.main()
