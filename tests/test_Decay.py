@@ -21,11 +21,11 @@ class TestDecay(unittest.TestCase):
         self.assertEqual(self.pion.mother, self.lambda0)
 
     def test_add_variables(self):
+        """Check if the variables has been assigned"""
         self.lambda0.add_variables(['nTracks', 'dr'] + self.commonVariables)
         self.proton.add_variables(['protonID', 'charge'] + self.commonVariables)
         self.pion.add_variables(['pionID', 'charge'] + self.commonVariables)
 
-        # Check if the variables has been assigned
         self.assertEqual(self.lambda0.variables, ['nTracks', 'dr', 'mcPDG', 'isSignal'])
         self.assertEqual(self.proton.variables, ['protonID', 'charge', 'mcPDG', 'isSignal'])
         self.assertEqual(self.pion.variables, ['pionID', 'charge', 'mcPDG', 'isSignal'])
