@@ -16,16 +16,28 @@ class TestParticle(unittest.TestCase):
             parent=self.lambda0)
 
     def test_getVariablesPrefixed(self):
-        """Check if the variables has been assigned"""
+        """Variables has been assigned"""
         self.assertEqual(self.lambda0.variables, ['nTracks', 'dr', 'mcPDG', 'isSignal'])
         self.assertEqual(self.proton.variables, ['protonID', 'charge', 'mcPDG', 'isSignal'])
         self.assertEqual(self.pion.variables, ['pionID', 'charge', 'mcPDG', 'isSignal'])
+
+    def test_getAncestorsVariablesPrefixed(self):
+        """Variables preserve correct hierarchy"""
         self.assertEqual(self.lambda0.getAncestorsVariablesPrefixed(),
                          ['nTracks', 'dr', 'mcPDG', 'isSignal',
                           'daughter(0, protonID)', 'daughter(0, charge)',
                           'daughter(0, mcPDG)', 'daughter(0, isSignal)',
                           'daughter(1, pionID)', 'daughter(1, charge)',
                           'daughter(1, mcPDG)', 'daughter(1, isSignal)'])
+
+    def test_getAncestorsVariables(self):
+        """Variables are named correctly"""
+        self.assertEqual(self.lambda0.getAncestorsVariables(),
+                         ['lambda0_nTracks', 'lambda0_dr', 'lambda0_mcPDG', 'lambda0_isSignal',
+                          'proton_protonID', 'proton_charge',
+                          'proton_mcPDG', 'proton_isSignal',
+                          'pion_pionID', 'pion_charge',
+                          'pion_mcPDG', 'pion_isSignal'])
 
     def tearDown(self):
         self.lambda0 = None
