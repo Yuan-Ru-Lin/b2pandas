@@ -32,6 +32,16 @@ class Particle(BaseParticle, NodeMixin):
                 lst += node.getVariablesPrefixed()
         return lst
 
+    def getVariables(self):
+        return [self.name + '_' + variable for variable in self.variables]
+
+    def getAncestorsVariables(self):
+        lst = []
+        for children in LevelOrderGroupIter(self):
+            for node in children:
+                lst += node.getVariables()
+        return lst
+
     @staticmethod
     def daughter(variable, order):
         return f"daughter({order}, {variable})"
