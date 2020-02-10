@@ -18,7 +18,15 @@ class Vector3D:
         else:
             return Vector3D(self.c1 * other, self.c2 * other, self.c3 * other)
 
-    def __rmul(self, other):
+    def __add__(self, other):
+        assert isinstance(other, Vector3D), "You must add another Vector3D!"
+        return Vector3D(self.c1 + other.c1, self.c2 + other.c2, self.c3 + other.c3)
+
+    def __sub__(self, other):
+        assert isinstance(other, Vector3D), "You must subtract another Vector3D!"
+        return Vector3D(self.c1 - other.c1, self.c2 - other.c2, self.c3 - other.c3)
+
+    def __rmul__(self, other):
         return self.__mul__(other)
 
     def __truediv__(self, divisor: float):
