@@ -51,6 +51,9 @@ class FourMomentum:
     def __add__(self, other):
         return FourMomentum(self.c0 + other.c0, self.c1 + other.c1, self.c2 + other.c2, self.c3 + other.c3)
 
+    def __sub__(self, other):
+        return FourMomentum(self.c0 - other.c0, self.c1 - other.c1, self.c2 - other.c2, self.c3 - other.c3)
+
     def __mul__(self, other):
         return - self.c0 * other.c0 + self.c1 * other.c1 + self.c2 * other.c2 + self.c3 * other.c3
 
