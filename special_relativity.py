@@ -54,6 +54,9 @@ class FourMomentum:
     def __mul__(self, other):
         return - self.c0 * other.c0 + self.c1 * other.c1 + self.c2 * other.c2 + self.c3 * other.c3
 
+    def __truediv__(self, divisor: float):
+        return FourMomentum(self.c0 / divisor, self.c1 / divisor, self.c2 / divisor, self.c3 / divisor)
+
     def temporalPart(self):
         return self.c0
 
