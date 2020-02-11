@@ -1,9 +1,8 @@
 language: python
 python:
   - 3.6
-  - 3.7
   - 3.8
 install:
   - pip install -r requirements.txt
 script:
-  - python3 -m b2pandas.tests.test_Decay
+  - python3 -m tests.test_Decay
