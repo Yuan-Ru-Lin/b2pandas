@@ -1,5 +1,5 @@
 import unittest
-from ..special_relativity import Vector3D
+from special_relativity import Vector3D
 import numpy as np
 import pandas as pd
 

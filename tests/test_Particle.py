@@ -1,5 +1,5 @@
 import unittest
-from ..steering_helper import Particle
+from steering_helper import Particle
 
 
 class TestParticle(unittest.TestCase):
