@@ -4,5 +4,8 @@ python:
   - 3.8
 install:
   - pip install -r requirements.txt
+  - pip install coveralls
 script:
-  - python3 test.py
+  - coverage run test.py
+after_success:
+  - coveralls
