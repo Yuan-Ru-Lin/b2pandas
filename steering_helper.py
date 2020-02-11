@@ -1,4 +1,5 @@
 from anytree import NodeMixin, LevelOrderGroupIter
+from functools import reduce
 
 class BaseParticle:
 
@@ -46,6 +47,9 @@ class Particle(BaseParticle, NodeMixin):
     def daughter(variable, order):
         return f"daughter({order}, {variable})"
 
+
+def concatenateCuts(cuts):
+    return reduce(lambda x, y: x + ' and ' + y, cuts)
 
 fourMomentum = ['E', 'px', 'py', 'pz']
 metaData = ['__experiment__', '__run__', '__event__',  '__candidate__', '__ncandidates__', '__weight__']
