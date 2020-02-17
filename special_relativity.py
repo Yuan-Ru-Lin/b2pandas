@@ -55,7 +55,7 @@ class FourMomentum:
         return FourMomentum(self.c0 - other.c0, self.c1 - other.c1, self.c2 - other.c2, self.c3 - other.c3)
 
     def __mul__(self, other):
-        return - self.c0 * other.c0 + self.c1 * other.c1 + self.c2 * other.c2 + self.c3 * other.c3
+        return self.c0 * other.c0 - self.c1 * other.c1 - self.c2 * other.c2 - self.c3 * other.c3
 
     def __truediv__(self, divisor: float):
         return FourMomentum(self.c0 / divisor, self.c1 / divisor, self.c2 / divisor, self.c3 / divisor)
@@ -67,7 +67,7 @@ class FourMomentum:
         return Vector3D(self.c1, self.c2, self.c3)
 
     def invariantMass(self):
-        return np.sqrt(-1 * (self * self))
+        return np.sqrt(self * self)
 
     def _LorentzFactor(self):
         return self.c0 / self.invariantMass()
