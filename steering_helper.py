@@ -9,11 +9,16 @@ class BaseParticle:
 
 class Particle(BaseParticle, NodeMixin):
 
-    def __init__(self, name, variables, parent=None, children=None):
+    def __init__(self, name, variables, tex_code=None, parent=None, children=None):
         super(Particle, self).__init__(name=name, variables=variables)
+        if tex_code:
+            self.tex_code = tex_code
         self.parent = parent
         if children:
             self.children = children
+
+    def __repr__(self):
+        return f'{self.name}'
 
     def getVariablePrefixed(self, variable):
         node = self
