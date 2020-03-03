@@ -54,7 +54,7 @@ class Particle(BaseParticle, NodeMixin):
 
 
 def concatenateCuts(cuts):
-    return reduce(lambda x, y: x + ' and ' + y, cuts)
+    return reduce(lambda x, y: x + ' and ' + y, cuts, '')
 
 fourMomentum = ['E', 'px', 'py', 'pz']
 metaData = ['__experiment__', '__run__', '__event__',  '__candidate__', '__ncandidates__', '__weight__']
