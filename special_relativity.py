@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np
 from warnings import warn
 
-warn("Metric signature set to: (+,-,-,-)")
-
 class Vector3D:
 
     def __init__(self, c1, c2, c3):
