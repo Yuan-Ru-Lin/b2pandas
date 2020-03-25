@@ -31,7 +31,7 @@ class Particle(BaseParticle, NodeMixin):
         elif parentheses:
             return self.name + '_' + variable
         else:
-            return self.name + '_' + variable.replace('(', '_').replace(')', '').replace(',', '_')
+            return self.name + '_' + removeParentheses(variable)
             
 
     def getVariables(self, prefixed=False, parentheses=True):
@@ -53,6 +53,9 @@ def concatenateCuts(cuts):
     if cuts:
         return ' and '.join(cuts)
     return ''
+
+def removeParentheses(variable):
+    return variable.replace('(', '_').replace(')', '').replace(',', '_')
 
 fourMomentum = ['E', 'px', 'py', 'pz']
 metaData = ['__experiment__', '__run__', '__event__',  '__candidate__', '__ncandidates__', '__weight__']
