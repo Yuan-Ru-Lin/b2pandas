@@ -20,37 +20,33 @@ class Particle(BaseParticle, NodeMixin):
     def __repr__(self):
         return f'{self.name}'
 
-    def getVariablePrefixed(self, variable):
-        node = self
-        string = variable
-        while node.parent:
-            string = Particle.daughter(string, node.parent.children.index(node))
-            node = node.parent
-        return string
+    def getVariable(self, variable, prefixed=False, parentheses=True):
+        if prefixed:
+            node = self
+            string = variable
+            while node.parent:
+                string = Particle.daughter(string, node.parent.children.index(node))
+                node = node.parent
+            return string
+        elif parentheses:
+            return self.name + '_' + variable
+        else:
+            return self.name + '_' + variable.replace('(', '_').replace(')', '').replace(',', '_')
+            
 
-    def getVariablesPrefixed(self):
-        return [self.getVariablePrefixed(variable) for variable in self.variables]
+    def getVariables(self, prefixed=False, parentheses=True):
+        return [self.getVariable(variable, prefixed=prefixed, parentheses=parentheses) for variable in self.variables]
 
-    def getAncestorsVariablesPrefixed(self):
+    def getPredecessorsVariables(self, prefixed=False, parentheses=True):
         lst = []
         for children in LevelOrderGroupIter(self):
             for node in children:
-                lst += node.getVariablesPrefixed()
-        return lst
-
-    def getVariables(self):
-        return [self.name + '_' + variable for variable in self.variables]
-
-    def getAncestorsVariables(self):
-        lst = []
-        for children in LevelOrderGroupIter(self):
-            for node in children:
-                lst += node.getVariables()
+                lst += node.getVariables(prefixed=prefixed, parentheses=parentheses)
         return lst
 
     @staticmethod
     def daughter(variable, order):
-        return f"daughter({order}, {variable})"
+        return f"daughter({order},{variable})"
 
 
 def concatenateCuts(cuts):
